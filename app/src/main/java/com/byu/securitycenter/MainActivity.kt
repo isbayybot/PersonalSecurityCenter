@@ -11,6 +11,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.FactCheck
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -33,16 +34,16 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-private val Cyan = Color(0xFF00E5FF)
-private val Green = Color(0xFF00E676)
-private val Amber = Color(0xFFFFB300)
-private val Surface1 = Color(0xFF121820)
+internal val Cyan = Color(0xFF00E5FF)
+internal val Green = Color(0xFF00E676)
+internal val Amber = Color(0xFFFFB300)
+internal val Surface1 = Color(0xFF121820)
 
 private enum class Tab(val label: String, val icon: ImageVector) {
     DASHBOARD("Dashboard", Icons.Filled.Shield),
     PERMISSIONS("Izin", Icons.Filled.AdminPanelSettings),
     NETWORK("Jaringan", Icons.Filled.Wifi),
-    CHECKER("Periksa", Icons.Filled.FactCheck),
+    CHECKER("Periksa", Icons.AutoMirrored.Filled.FactCheck),
     LOG("Log", Icons.Filled.History)
 }
 
@@ -80,6 +81,7 @@ private fun App() {
         Box(Modifier.padding(pad).fillMaxSize()) {
             when (tab) {
                 Tab.DASHBOARD -> DashboardScreen()
+                Tab.PERMISSIONS -> PermissionsScreen()
                 Tab.LOG -> LogScreen()
                 else -> ComingSoon(tab.label)
             }
